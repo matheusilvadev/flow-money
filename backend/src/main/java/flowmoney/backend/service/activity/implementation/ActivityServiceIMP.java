@@ -25,6 +25,7 @@ public class ActivityServiceIMP implements ActivityService {
         return new ActivityServiceIMP(aGateway);
     }
 
+    //Implementation of the method for inserting a new activity
     @Override
     public InsertActivityOutputDTO insertActivity(InsertActivityInputDTO input) {
         final var anActivity = InsertActivityInputToActivityMapper.build().apply(input);
@@ -33,11 +34,13 @@ public class ActivityServiceIMP implements ActivityService {
         return ActivityToInsertActivityOutputMapper.build().apply(anActivity);
     }
 
+    //Implementation of the activity removal method by id
     @Override
     public void removeActivity(String anId) {
         this.gateway.delete(anId);
     }
 
+    //Implementation of the method of listing existing activities
     @Override
     public List<ListActivitiesOutputDTO> listActivities() {
 
@@ -49,6 +52,8 @@ public class ActivityServiceIMP implements ActivityService {
                 .collect(Collectors.toList());
     }
 
+    //Implementation of the method to calculate the
+    //               value from the sum of revenues and subtraction of expenses
     @Override
     public float calculateBalance() {
         final var aList = this.gateway.findAll();
