@@ -21,7 +21,7 @@ public class ActivityServiceIMP implements ActivityService {
         this.gateway = aGateway;
     }
 
-    private static ActivityServiceIMP build(final ActivityGateway aGateway){
+    public static ActivityServiceIMP build(final ActivityGateway aGateway){
         return new ActivityServiceIMP(aGateway);
     }
 
